@@ -272,9 +272,9 @@ void RTCTask(void * pvParameters)
 						break;
 					case YOUR_STATE :
 						Local_u8Your = u8GetNumber((char*)Local_CMD->Payload,Local_CMD->Len);
-						if(RTC_u8IsRTCTimeCigValid(Local_u8Day,Local_u8Month,Local_u8Your))
+						if(RTC_u8IsRTCDataCigValid(Local_u8Day,Local_u8Month,Local_u8Your))
 						{
-							RTC_ConfigTime(Local_u8Day,Local_u8Month,Local_u8Your);
+							RTC_ConfigData(Local_u8Day,Local_u8Month,Local_u8Your);
 							xQueueSend(Q_Print,(void*)&MsgRTCConfigSuccess,portMAX_DELAY);
 							RTC_voidShowTimeDate();
 						}
